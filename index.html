@@ -12,7 +12,7 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         :root {
             --primary: #8a2be2;
             --primary-dark: #6a1cb0;
@@ -22,35 +22,37 @@
             --punjabi-dark: #cc7a29;
             --alternative-color: #6c5ce7;
             --new-site-color: #00cec9;
+            --support-color: #ff6b6b;
+            --support-dark: #e55a5a;
             --dark-bg: #0f0c1d;
             --card-bg: #1a1630;
             --text-light: #e6e6fa;
             --text-gray: #b0aac0;
             --transition: all 0.3s ease;
         }
-        
+
         body {
             background-color: var(--dark-bg);
             color: var(--text-light);
             min-height: 100vh;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(255, 107, 139, 0.1) 0%, transparent 20%);
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 40px 20px 20px;
             position: relative;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
@@ -58,12 +60,12 @@
             gap: 15px;
             margin-bottom: 15px;
         }
-        
+
         .logo i {
             font-size: 2.8rem;
             color: var(--primary);
         }
-        
+
         h1 {
             font-size: 3.2rem;
             background: linear-gradient(to right, var(--anime-color), var(--movie-color));
@@ -73,21 +75,135 @@
             text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             margin-bottom: 10px;
         }
-        
+
         .subtitle {
             font-size: 1.2rem;
             color: var(--text-gray);
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 25px;
         }
-        
+
+        /* ── Support Button (Header) ── */
+        .support-btn-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.3px;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.35);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-btn-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .support-btn-header:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(255, 107, 107, 0.5);
+            color: #fff;
+        }
+        .support-btn-header:hover::after {
+            opacity: 1;
+        }
+        .support-btn-header i {
+            font-size: 1.2rem;
+            animation: heartbeat 1.4s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            15% {
+                transform: scale(1.25);
+            }
+            30% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.15);
+            }
+            60% {
+                transform: scale(1);
+            }
+        }
+
+        /* ── Floating Support Button ── */
+        .floating-support {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.45);
+            transition: var(--transition);
+            letter-spacing: 0.2px;
+        }
+        .floating-support:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 32px rgba(255, 107, 107, 0.6);
+            color: #fff;
+        }
+        .floating-support i {
+            font-size: 1.1rem;
+            animation: heartbeat 1.4s infinite;
+        }
+        .floating-support .support-text {
+            display: inline;
+        }
+        @media (max-width: 600px) {
+            .floating-support {
+                bottom: 20px;
+                right: 16px;
+                padding: 12px 16px;
+                border-radius: 50%;
+                gap: 0;
+            }
+            .floating-support .support-text {
+                display: none;
+            }
+            .floating-support i {
+                font-size: 1.3rem;
+                margin: 0;
+            }
+        }
+
         .category-tabs {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-bottom: 40px;
+            flex-wrap: wrap;
         }
-        
+
         .tab-btn {
             padding: 12px 30px;
             border: none;
@@ -103,46 +219,50 @@
             gap: 10px;
             border: 2px solid transparent;
         }
-        
+
         .tab-btn.active {
             border-color: var(--primary);
             background: rgba(138, 43, 226, 0.1);
             box-shadow: 0 5px 15px rgba(138, 43, 226, 0.2);
         }
-        
+
         .tab-btn:hover {
             transform: translateY(-3px);
         }
-        
+
         .anime-tab i {
             color: var(--anime-color);
         }
-        
         .movies-tab i {
             color: var(--movie-color);
         }
-        
+
         .content {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
             margin-bottom: 50px;
         }
-        
+
         .category-section {
             display: none;
             animation: fadeIn 0.5s ease;
         }
-        
         .category-section.active {
             display: block;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .section-title {
             font-size: 2rem;
             margin-bottom: 25px;
@@ -151,18 +271,18 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
-        
+
         .anime-title {
             color: var(--anime-color);
             border-color: var(--anime-color);
         }
-        
         .movies-title {
             color: var(--movie-color);
             border-color: var(--movie-color);
         }
-        
+
         .site-card {
             background: var(--card-bg);
             border-radius: 15px;
@@ -175,19 +295,19 @@
             flex-direction: column;
             position: relative;
         }
-        
+
         .site-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             border-color: rgba(255, 255, 255, 0.1);
         }
-        
+
         .card-header {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
         }
-        
+
         .card-icon {
             width: 60px;
             height: 60px;
@@ -197,38 +317,37 @@
             justify-content: center;
             margin-right: 15px;
             font-size: 1.8rem;
+            flex-shrink: 0;
         }
-        
+
         .anime-card .card-icon {
             background: rgba(255, 107, 139, 0.15);
             color: var(--anime-color);
         }
-        
         .movie-card .card-icon {
             background: rgba(77, 171, 247, 0.15);
             color: var(--movie-color);
         }
-        
+
         .card-title {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 5px;
         }
-        
         .card-url {
             color: var(--text-gray);
             font-size: 0.9rem;
             word-break: break-all;
         }
-        
+
         .card-description {
             flex-grow: 1;
             color: var(--text-gray);
             margin-bottom: 25px;
             line-height: 1.7;
         }
-        
-        /* Punjabi Movie Tag Styling */
+
+        /* Tags */
         .punjabi-tag {
             position: absolute;
             top: 20px;
@@ -246,18 +365,21 @@
             z-index: 2;
             animation: pulse 2s infinite;
         }
-        
         @keyframes pulse {
-            0% { box-shadow: 0 4px 10px rgba(255, 153, 51, 0.3); }
-            50% { box-shadow: 0 4px 15px rgba(255, 153, 51, 0.5); }
-            100% { box-shadow: 0 4px 10px rgba(255, 153, 51, 0.3); }
+            0% {
+                box-shadow: 0 4px 10px rgba(255, 153, 51, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 15px rgba(255, 153, 51, 0.5);
+            }
+            100% {
+                box-shadow: 0 4px 10px rgba(255, 153, 51, 0.3);
+            }
         }
-        
         .punjabi-tag i {
             font-size: 0.9rem;
         }
-        
-        /* New Site Tag */
+
         .new-tag {
             position: absolute;
             top: 20px;
@@ -274,12 +396,11 @@
             box-shadow: 0 4px 10px rgba(0, 206, 201, 0.3);
             z-index: 2;
         }
-        
         .new-tag i {
             font-size: 0.9rem;
         }
-        
-        /* MovieBox Domains Container */
+
+        /* MovieBox domain container */
         .moviebox-domains-container {
             background: rgba(108, 92, 231, 0.1);
             border-radius: 10px;
@@ -287,7 +408,6 @@
             margin: 15px 0;
             border-left: 3px solid var(--alternative-color);
         }
-        
         .domains-title {
             font-size: 0.95rem;
             color: var(--alternative-color);
@@ -297,17 +417,14 @@
             align-items: center;
             gap: 8px;
         }
-        
         .domains-title i {
             font-size: 0.9rem;
         }
-        
         .domains-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
-        
         .domain-option {
             background: rgba(108, 92, 231, 0.2);
             border: 1px solid rgba(108, 92, 231, 0.3);
@@ -320,24 +437,21 @@
             text-decoration: none;
             display: inline-block;
         }
-        
         .domain-option:hover {
             background: rgba(108, 92, 231, 0.4);
             transform: translateY(-2px);
         }
-        
         .domain-option.active-domain {
             background: var(--alternative-color);
             font-weight: 600;
         }
-        
         .domain-note {
             font-size: 0.8rem;
             color: var(--text-gray);
             margin-top: 8px;
             font-style: italic;
         }
-        
+
         .visit-btn {
             display: inline-flex;
             align-items: center;
@@ -356,30 +470,25 @@
             font-size: 1rem;
             margin-top: 15px;
         }
-        
         .visit-btn:hover {
             background: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 7px 15px rgba(138, 43, 226, 0.3);
         }
-        
         .anime-card .visit-btn {
             background: var(--anime-color);
         }
-        
         .anime-card .visit-btn:hover {
             background: #ff5570;
         }
-        
         .movie-card .visit-btn {
             background: var(--movie-color);
         }
-        
         .movie-card .visit-btn:hover {
             background: #2d9af0;
         }
-        
-        /* Punjabi Highlight Section */
+
+        /* Highlight boxes */
         .punjabi-highlight {
             background: rgba(255, 153, 51, 0.1);
             border-radius: 12px;
@@ -387,7 +496,6 @@
             margin: 30px 0;
             border-left: 4px solid var(--punjabi-color);
         }
-        
         .punjabi-highlight h3 {
             color: var(--punjabi-color);
             margin-bottom: 10px;
@@ -396,43 +504,11 @@
             gap: 10px;
             font-size: 1.3rem;
         }
-        
         .punjabi-highlight p {
             color: var(--text-light);
             margin-bottom: 0;
         }
-        
-        /* New Sites Counter */
-        .new-counter {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--new-site-color);
-            color: white;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 10px;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-        
-        /* Punjabi Sites Counter */
-        .punjabi-counter {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--punjabi-color);
-            color: white;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 10px;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-        
-        /* Updated Sites Info Box */
+
         .updated-info {
             background: rgba(0, 206, 201, 0.1);
             border-radius: 12px;
@@ -440,7 +516,6 @@
             margin: 30px 0;
             border-left: 4px solid var(--new-site-color);
         }
-        
         .updated-info h3 {
             color: var(--new-site-color);
             margin-bottom: 10px;
@@ -449,12 +524,31 @@
             gap: 10px;
             font-size: 1.3rem;
         }
-        
         .updated-info p {
             color: var(--text-light);
             margin-bottom: 0;
         }
-        
+
+        .new-counter,
+        .punjabi-counter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        .new-counter {
+            background: var(--new-site-color);
+        }
+        .punjabi-counter {
+            background: var(--punjabi-color);
+        }
+
         footer {
             text-align: center;
             padding: 30px 20px;
@@ -463,7 +557,6 @@
             color: var(--text-gray);
             font-size: 0.9rem;
         }
-        
         .disclaimer {
             max-width: 800px;
             margin: 0 auto 25px;
@@ -473,33 +566,45 @@
             font-size: 0.85rem;
             line-height: 1.6;
         }
-        
         .warning {
             color: #ffcc00;
             font-weight: 600;
         }
-        
+
+        /* ── Footer Support Link ── */
+        .footer-support-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #ff8e53;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-left: 8px;
+        }
+        .footer-support-link:hover {
+            color: #ff6b6b;
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
             }
-            
             .content {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
-            
             .category-tabs {
                 flex-direction: column;
                 align-items: center;
             }
-            
             .tab-btn {
                 width: 100%;
                 max-width: 300px;
                 justify-content: center;
             }
-            
-            .punjabi-tag, .new-tag {
+            .punjabi-tag,
+            .new-tag {
                 position: relative;
                 top: 0;
                 right: 0;
@@ -507,25 +612,25 @@
                 margin-bottom: 15px;
                 align-self: flex-start;
             }
-            
             .domains-list {
                 flex-direction: column;
             }
+            .support-btn-header {
+                padding: 12px 22px;
+                font-size: 0.95rem;
+            }
         }
-        
+
         @media (max-width: 480px) {
             h1 {
                 font-size: 2rem;
             }
-            
             .logo i {
                 font-size: 2rem;
             }
-            
             .section-title {
                 font-size: 1.7rem;
             }
-            
             .site-card {
                 padding: 20px;
             }
@@ -540,7 +645,12 @@
                 <h1>StreamPoint</h1>
             </div>
             <p class="subtitle">Your gateway to the best anime and movie streaming websites. Explore thousands of titles across multiple platforms. Always use caution and protection when visiting third-party sites.</p>
-            
+
+            <!-- Support Button -->
+            <a href="https://lsgzt.github.io/support.html" target="_blank" rel="noopener noreferrer" class="support-btn-header" title="Buy me a coffee!">
+                <i class="fas fa-heart"></i> Support This Project
+            </a>
+
             <div class="category-tabs">
                 <button class="tab-btn anime-tab active" data-category="anime">
                     <i class="fas fa-dragon"></i> Anime Streaming
@@ -550,55 +660,60 @@
                 </button>
             </div>
         </header>
-        
+
         <main>
             <!-- Anime Section -->
             <div class="category-section anime-section active" id="anime">
                 <h2 class="section-title anime-title">
                     <i class="fas fa-dragon"></i> Anime Streaming Sites
                 </h2>
-                
                 <div class="content">
-                    <!-- Anime site cards will be inserted here by JavaScript -->
+                    <!-- Anime site cards rendered by JS -->
                 </div>
             </div>
-            
+
             <!-- Movies Section -->
             <div class="category-section movies-section" id="movies">
                 <h2 class="section-title movies-title">
                     <i class="fas fa-video"></i> Movie Streaming Sites
                 </h2>
-                
-                <!-- Updated Sites Info -->
                 <div class="updated-info">
                     <h3><i class="fas fa-sync-alt"></i> Recently Updated</h3>
-                    <p>We've removed non-working sites and added <strong>10 new working movie sites</strong> (9 with Punjabi movies) and <strong>1 new anime site</strong>. All sites are verified and currently operational.</p>
+                    <p>We've removed non-working sites and added <strong>10 new working movie sites</strong> (9 with Punjabi movies) and <strong>2 new anime sites</strong>. All sites are verified and currently operational.</p>
                 </div>
-                
-                <!-- Punjabi Movie Highlight -->
                 <div class="punjabi-highlight">
                     <h3><i class="fas fa-star"></i> Punjabi Movie Streaming</h3>
                     <p>Looking for Punjabi movies? <strong>9 websites</strong> below include extensive collections of Punjabi cinema alongside mainstream Hollywood and Bollywood films. They're marked with orange tags for easy identification.</p>
                 </div>
-                
                 <div class="content">
-                    <!-- Movie site cards will be inserted here by JavaScript -->
+                    <!-- Movie site cards rendered by JS -->
                 </div>
             </div>
         </main>
-        
+
         <footer>
             <div class="disclaimer">
                 <p class="warning"><i class="fas fa-exclamation-triangle"></i> Disclaimer: This page is for informational purposes only.</p>
                 <p>The websites listed are third-party services. We do not host or control any content on these platforms. Please be aware of copyright laws in your country and use appropriate security measures (VPN, ad-blocker, antivirus) when visiting streaming sites. Always support official releases when possible.</p>
             </div>
-            <p>&copy; 2025 StreamPoint Portal. All website names are property of their respective owners.</p>
-            <p>Made with <i class="fas fa-heart" style="color:#ff6b8b;"></i> for anime and movie enthusiasts</p>
+            <p>&copy; 2026 StreamPoint Portal. All website names are property of their respective owners.</p>
+            <p>
+                Made with <i class="fas fa-heart" style="color:#ff6b8b;"></i> for anime and movie enthusiasts
+                &nbsp;|&nbsp;
+                <a href="https://lsgzt.github.io/support.html" target="_blank" rel="noopener noreferrer" class="footer-support-link">
+                    <i class="fas fa-mug-hot"></i> Tip Jar
+                </a>
+            </p>
         </footer>
     </div>
 
+    <!-- Floating Support Button -->
+    <a href="https://lsgzt.github.io/support.html" target="_blank" rel="noopener noreferrer" class="floating-support" title="Buy me a coffee!">
+        <i class="fas fa-mug-hot"></i>
+        <span class="support-text">Tip Me</span>
+    </a>
+
     <script>
-        // Site data
         const animeSites = [
             {
                 url: "https://watchanimeworld.in/",
@@ -620,9 +735,15 @@
                 name: "ToonStream World",
                 description: "New anime streaming site offering a wide variety of anime series and movies with high-quality streaming and regular updates.",
                 isNew: true
+            },
+            {
+                url: "https://www.rareanimes.mov/",
+                name: "Rare Animes",
+                description: "A specialized anime streaming destination featuring hard-to-find and rare anime titles alongside popular series. Perfect for discovering hidden gems and cult classics.",
+                isNew: true
             }
         ];
-        
+
         const movieSites = [
             {
                 url: "https://netmirror.bio",
@@ -661,7 +782,6 @@
                 punjabiMovies: true,
                 isNew: false
             },
-            // NEW SITES START HERE
             {
                 url: "https://www.cineby.gd/",
                 name: "Cineby GD",
@@ -726,105 +846,66 @@
                 isNew: true
             }
         ];
-        
-        // DOM elements
+
         const animeSection = document.querySelector('.anime-section .content');
         const movieSection = document.querySelector('.movies-section .content');
         const tabButtons = document.querySelectorAll('.tab-btn');
         const categorySections = document.querySelectorAll('.category-section');
-        
-        // Generate site card HTML
+
         function generateSiteCard(site, category) {
-            // Check if it's a site with multiple domains
             if (site.multipleDomains && site.domains) {
                 const primaryDomain = site.domains.find(d => d.primary) || site.domains[0];
                 const domainLabel = primaryDomain.label;
                 const domainUrl = new URL(primaryDomain.url).hostname.replace('www.', '');
-                
-                // Add Punjabi tag if applicable
-                const punjabiTag = site.punjabiMovies ? 
-                    `<div class="punjabi-tag">
-                        <i class="fas fa-film"></i>
-                        Punjabi Movies
-                    </div>` : '';
-                
-                // Add New tag if applicable
-                const newTag = site.isNew ? 
-                    `<div class="new-tag">
-                        <i class="fas fa-certificate"></i>
-                        New
-                    </div>` : '';
-                
-                // Generate domain options HTML
+                const punjabiTag = site.punjabiMovies ?
+                    `<div class="punjabi-tag"><i class="fas fa-film"></i> Punjabi Movies</div>` :
+                    '';
+                const newTag = site.isNew ?
+                    `<div class="new-tag"><i class="fas fa-certificate"></i> New</div>` :
+                    '';
                 let domainsHTML = '';
-                site.domains.forEach((domain, index) => {
+                site.domains.forEach((domain) => {
                     const isActive = domain.primary ? 'active-domain' : '';
                     const domainHostname = new URL(domain.url).hostname;
                     domainsHTML += `
-                        <a href="${domain.url}" target="_blank" class="domain-option ${isActive}" 
+                        <a href="${domain.url}" target="_blank" class="domain-option ${isActive}"
                            data-domain-url="${domain.url}" data-domain-label="${domain.label}">
                            ${domainHostname}
-                        </a>
-                    `;
+                        </a>`;
                 });
-                
                 return `
                     <div class="site-card ${category}-card">
-                        ${punjabiTag}
-                        ${newTag}
+                        ${punjabiTag} ${newTag}
                         <div class="card-header">
-                            <div class="card-icon">
-                                <i class="fas ${category === 'anime' ? 'fa-dragon' : 'fa-film'}"></i>
-                            </div>
+                            <div class="card-icon"><i class="fas ${category === 'anime' ? 'fa-dragon' : 'fa-film'}"></i></div>
                             <div>
                                 <h3 class="card-title">${site.name}</h3>
                                 <p class="card-url">${domainUrl}</p>
                             </div>
                         </div>
                         <p class="card-description">${site.description}</p>
-                        
                         <div class="moviebox-domains-container">
-                            <div class="domains-title">
-                                <i class="fas fa-exchange-alt"></i> Alternative Domains
-                            </div>
-                            <div class="domains-list" id="domain-list-${site.name.replace(/\s+/g, '-')}">
-                                ${domainsHTML}
-                            </div>
+                            <div class="domains-title"><i class="fas fa-exchange-alt"></i> Alternative Domains</div>
+                            <div class="domains-list">${domainsHTML}</div>
                             <p class="domain-note">If one domain doesn't work, try another alternative.</p>
                         </div>
-                        
-                        <a href="${primaryDomain.url}" target="_blank" rel="noopener noreferrer" 
-                           class="visit-btn" id="visit-btn-${site.name.replace(/\s+/g, '-')}">
+                        <a href="${primaryDomain.url}" target="_blank" rel="noopener noreferrer" class="visit-btn">
                             <i class="fas fa-external-link-alt"></i> Visit ${domainLabel}
                         </a>
-                    </div>
-                `;
+                    </div>`;
             } else {
-                // Regular site with single domain
                 const domain = new URL(site.url).hostname.replace('www.', '');
-                
-                // Add Punjabi tag if applicable
-                const punjabiTag = site.punjabiMovies ? 
-                    `<div class="punjabi-tag">
-                        <i class="fas fa-film"></i>
-                        Punjabi Movies
-                    </div>` : '';
-                
-                // Add New tag if applicable
-                const newTag = site.isNew ? 
-                    `<div class="new-tag">
-                        <i class="fas fa-certificate"></i>
-                        New
-                    </div>` : '';
-                
+                const punjabiTag = site.punjabiMovies ?
+                    `<div class="punjabi-tag"><i class="fas fa-film"></i> Punjabi Movies</div>` :
+                    '';
+                const newTag = site.isNew ?
+                    `<div class="new-tag"><i class="fas fa-certificate"></i> New</div>` :
+                    '';
                 return `
                     <div class="site-card ${category}-card">
-                        ${punjabiTag}
-                        ${newTag}
+                        ${punjabiTag} ${newTag}
                         <div class="card-header">
-                            <div class="card-icon">
-                                <i class="fas ${category === 'anime' ? 'fa-dragon' : 'fa-film'}"></i>
-                            </div>
+                            <div class="card-icon"><i class="fas ${category === 'anime' ? 'fa-dragon' : 'fa-film'}"></i></div>
                             <div>
                                 <h3 class="card-title">${site.name}</h3>
                                 <p class="card-url">${domain}</p>
@@ -834,144 +915,72 @@
                         <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="visit-btn">
                             <i class="fas fa-external-link-alt"></i> Visit Site
                         </a>
-                    </div>
-                `;
+                    </div>`;
             }
         }
-        
-        // Render site cards
+
         function renderSiteCards() {
             animeSection.innerHTML = '';
             movieSection.innerHTML = '';
-            
-            animeSites.forEach(site => {
-                animeSection.innerHTML += generateSiteCard(site, 'anime');
-            });
-            
-            movieSites.forEach(site => {
-                movieSection.innerHTML += generateSiteCard(site, 'movie');
-            });
-            
-            // Add event listeners for domain options
+            animeSites.forEach(site => { animeSection.innerHTML += generateSiteCard(site, 'anime'); });
+            movieSites.forEach(site => { movieSection.innerHTML += generateSiteCard(site, 'movie'); });
             setupDomainSelectors();
         }
-        
-        // Setup domain selection for sites with multiple domains
+
         function setupDomainSelectors() {
-            // Find all domain options in cards
             document.querySelectorAll('.domain-option').forEach(option => {
                 option.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    // Get card container
                     const card = this.closest('.site-card');
-                    
-                    // Remove active class from all domain options in this card
-                    card.querySelectorAll('.domain-option').forEach(opt => {
-                        opt.classList.remove('active-domain');
-                    });
-                    
-                    // Add active class to clicked option
+                    card.querySelectorAll('.domain-option').forEach(opt => opt.classList.remove(
+                        'active-domain'));
                     this.classList.add('active-domain');
-                    
-                    // Update visit button
                     const visitBtn = card.querySelector('.visit-btn');
                     const domainUrl = this.getAttribute('data-domain-url');
                     const domainLabel = this.getAttribute('data-domain-label');
-                    
                     visitBtn.setAttribute('href', domainUrl);
-                    visitBtn.innerHTML = `<i class="fas fa-external-link-alt"></i> Visit ${domainLabel}`;
-                    
-                    // Update the URL display in card header
-                    const domainHostname = new URL(domainUrl).hostname.replace('www.', '');
+                    visitBtn.innerHTML =
+                        `<i class="fas fa-external-link-alt"></i> Visit ${domainLabel}`;
                     const urlElement = card.querySelector('.card-url');
                     if (urlElement) {
-                        urlElement.textContent = domainHostname;
+                        urlElement.textContent = new URL(domainUrl).hostname.replace('www.', '');
                     }
                 });
             });
         }
-        
-        // Tab switching functionality
+
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const category = button.getAttribute('data-category');
-                
-                // Update active tab button
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                
-                // Show corresponding section
-                categorySections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                
+                categorySections.forEach(section => section.classList.remove('active'));
                 document.getElementById(category).classList.add('active');
-                
-                // Scroll to top of section
-                window.scrollTo({
-                    top: document.getElementById(category).offsetTop - 100,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: document.getElementById(category).offsetTop - 100,
+                    behavior: 'smooth' });
             });
         });
-        
-        // Initialize the page
+
         document.addEventListener('DOMContentLoaded', () => {
             renderSiteCards();
-            
-            // Add a simple animation to cards on page load
             const cards = document.querySelectorAll('.site-card');
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
-                }, index * 100);
+                }, index * 80);
             });
-            
-            // Update counters
-            const punjabiCount = movieSites.filter(site => site.punjabiMovies).length;
-            const newMovieCount = movieSites.filter(site => site.isNew).length;
-            const newAnimeCount = animeSites.filter(site => site.isNew).length;
-            
-            const punjabiCounter = document.querySelector('.punjabi-counter');
-            const newMovieCounter = document.querySelector('.movies-tab .new-counter');
-            const newAnimeCounter = document.querySelector('.anime-tab .new-counter');
-            
-            if (punjabiCounter) {
-                punjabiCounter.textContent = `${punjabiCount} with Punjabi`;
-            }
-            
-            if (newMovieCounter) {
-                newMovieCounter.textContent = `${newMovieCount} new`;
-            }
-            
-            if (newAnimeCounter) {
-                newAnimeCounter.textContent = `${newAnimeCount} new`;
-            }
         });
-        
-        // Add a fun hover effect for Punjabi tags
+
         document.addEventListener('mouseover', function(e) {
-            if (e.target.closest('.punjabi-tag')) {
-                const tag = e.target.closest('.punjabi-tag');
-                tag.style.transform = 'scale(1.05)';
-            }
-            if (e.target.closest('.new-tag')) {
-                const tag = e.target.closest('.new-tag');
-                tag.style.transform = 'scale(1.05)';
-            }
+            if (e.target.closest('.punjabi-tag')) e.target.closest('.punjabi-tag').style.transform =
+                'scale(1.05)';
+            if (e.target.closest('.new-tag')) e.target.closest('.new-tag').style.transform = 'scale(1.05)';
         });
-        
         document.addEventListener('mouseout', function(e) {
-            if (e.target.closest('.punjabi-tag')) {
-                const tag = e.target.closest('.punjabi-tag');
-                tag.style.transform = 'scale(1)';
-            }
-            if (e.target.closest('.new-tag')) {
-                const tag = e.target.closest('.new-tag');
-                tag.style.transform = 'scale(1)';
-            }
+            if (e.target.closest('.punjabi-tag')) e.target.closest('.punjabi-tag').style.transform =
+            'scale(1)';
+            if (e.target.closest('.new-tag')) e.target.closest('.new-tag').style.transform = 'scale(1)';
         });
     </script>
 </body>
