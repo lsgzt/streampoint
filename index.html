@@ -53,6 +53,31 @@
             position: relative;
         }
 
+        .lsgz-brand-link {
+            display: block;
+            line-height: 0;
+            text-decoration: none;
+            margin: 0 auto 4px;
+            width: fit-content;
+            transition: var(--transition);
+        }
+
+        .lsgz-brand-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .lsgz-brand-link:hover .lsgz-brand {
+            opacity: 1;
+        }
+
+        .lsgz-brand {
+            display: block;
+            width: 120px;
+            height: auto;
+            opacity: 0.75;
+            transition: var(--transition);
+        }
+
         .logo {
             display: flex;
             align-items: center;
@@ -588,6 +613,12 @@
         }
 
         @media (max-width: 768px) {
+            .lsgz-brand-link {
+                margin-bottom: 2px;
+            }
+            .lsgz-brand {
+                width: 83px;
+            }
             h1 {
                 font-size: 2.5rem;
             }
@@ -631,6 +662,7 @@
             .section-title {
                 font-size: 1.7rem;
             }
+
             .site-card {
                 padding: 20px;
             }
@@ -640,6 +672,9 @@
 <body>
     <div class="container">
         <header>
+            <a href="https://lsgzt.github.io" target="_blank" rel="noopener noreferrer" class="lsgz-brand-link" title="LSGZ">
+                <img src="lsgz-logo.png" alt="LSGZ" class="lsgz-brand">
+            </a>
             <div class="logo">
                 <i class="fas fa-film"></i>
                 <h1>StreamPoint</h1>
@@ -983,5 +1018,5 @@
             if (e.target.closest('.new-tag')) e.target.closest('.new-tag').style.transform = 'scale(1)';
         });
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a23ace962ecfb7d1',t:'MTc4NTQ4MjA3NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
