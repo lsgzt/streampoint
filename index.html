@@ -424,6 +424,25 @@
         .new-tag i {
             font-size: 0.9rem;
         }
+        .admins-choice-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #1a1630;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.35);
+            z-index: 2;
+        }
+        .admins-choice-tag i {
+            font-size: 0.9rem;
+        }
 
         /* MovieBox domain container */
         .moviebox-domains-container {
@@ -635,7 +654,8 @@
                 justify-content: center;
             }
             .punjabi-tag,
-            .new-tag {
+            .new-tag,
+            .admins-choice-tag {
                 position: relative;
                 top: 0;
                 right: 0;
@@ -680,11 +700,7 @@
                 <h1>StreamPoint</h1>
             </div>
             <p class="subtitle">Your gateway to the best anime and movie streaming websites. Explore thousands of titles across multiple platforms. Always use caution and protection when visiting third-party sites.</p>
-
-            <!-- Support Button -->
-            <a href="https://lsgzt.github.io/support.html" target="_blank" rel="noopener noreferrer" class="support-btn-header" title="Buy me a coffee!">
-                <i class="fas fa-heart"></i> Support This Project
-            </a>
+            <p style="text-align:center; color:var(--text-gray); margin-bottom:20px;"><i class="fas fa-info-circle"></i> Use Brave browser for best streaming experience</p>
 
             <div class="category-tabs">
                 <button class="tab-btn anime-tab active" data-category="anime">
@@ -712,10 +728,7 @@
                 <h2 class="section-title movies-title">
                     <i class="fas fa-video"></i> Movie Streaming Sites
                 </h2>
-                <div class="updated-info">
-                    <h3><i class="fas fa-sync-alt"></i> Recently Updated</h3>
-                    <p>We've removed non-working sites and added <strong>10 new working movie sites</strong> (9 with Punjabi movies) and <strong>2 new anime sites</strong>. All sites are verified and currently operational.</p>
-                </div>
+
                 <div class="punjabi-highlight">
                     <h3><i class="fas fa-star"></i> Punjabi Movie Streaming</h3>
                     <p>Looking for Punjabi movies? <strong>9 websites</strong> below include extensive collections of Punjabi cinema alongside mainstream Hollywood and Bollywood films. They're marked with orange tags for easy identification.</p>
@@ -751,9 +764,16 @@
     <script>
         const animeSites = [
             {
-                url: "https://watchanimeworld.in/",
+                url: "https://watchanimeworld.one/",
                 name: "Watch Anime World",
-                description: "A comprehensive anime streaming platform with a vast library of both classic and latest anime series, available in multiple languages."
+                description: "A comprehensive anime streaming platform with a vast library of both classic and latest anime series, available in multiple languages.",
+                adminsChoice: true
+            },
+            {
+                url: "https://www.rareanimes.mov/",
+                name: "Rare Animes",
+                description: "A specialized anime streaming destination featuring hard-to-find and rare anime titles alongside popular series. Perfect for discovering hidden gems and cult classics.",
+                adminsChoice: true
             },
             {
                 url: "https://animexstream.site/",
@@ -768,117 +788,100 @@
             {
                 url: "https://toonstream.world/",
                 name: "ToonStream World",
-                description: "New anime streaming site offering a wide variety of anime series and movies with high-quality streaming and regular updates.",
-                isNew: true
-            },
-            {
-                url: "https://www.rareanimes.mov/",
-                name: "Rare Animes",
-                description: "A specialized anime streaming destination featuring hard-to-find and rare anime titles alongside popular series. Perfect for discovering hidden gems and cult classics.",
-                isNew: true
+                description: "New anime streaming site offering a wide variety of anime series and movies with high-quality streaming and regular updates."
             }
         ];
 
         const movieSites = [
             {
-                url: "https://netmirror.center",
-                name: "NetMirror",
-                description: "Streaming site focused on providing high-quality content with minimal buffering and a clean, intuitive user interface. Includes a great selection of Punjabi movies.",
-                punjabiMovies: true,
-                isNew: false
-            },
-            {
                 name: "MovieBox App",
                 description: "Mobile-friendly streaming platform with a focus on the latest movie releases and popular TV series across various genres. Features an extensive collection of Punjabi cinema.",
                 punjabiMovies: true,
-                isNew: false,
+                adminsChoice: true,
                 multipleDomains: true,
                 domains: [
-                    { url: "https://movieboxapp.in/", label: "Primary (.in)", primary: true },
+                    { url: "https://movieboxapp.in/", label: "Primary (.in)" },
                     { url: "https://moviebox.id/", label: "Indonesia (.id)" },
                     { url: "https://moviebox.ph/", label: "Philippines (.ph)" },
                     { url: "https://moviebox.pk/", label: "Pakistan (.pk)" },
-                    { url: "https://movieboxonline.net/", label: "Alternative (.net)" }
+                    { url: "https://movieboxonline.net/", label: "Alternative (.net)", primary: true }
                 ],
-                currentDomain: "https://movieboxapp.in/",
-                currentDomainLabel: "Primary (.in)"
+                currentDomain: "https://movieboxonline.net/",
+                currentDomainLabel: "Alternative (.net)"
             },
             {
                 url: "https://netnaija.film/",
                 name: "NetNaija Film",
                 description: "Popular Nigerian streaming platform offering a wide variety of movies including Hollywood, Bollywood, and a great collection of Punjabi movies with multiple quality options.",
                 punjabiMovies: true,
-                isNew: false
+                adminsChoice: true
             },
             {
                 url: "https://123movie.app/",
                 name: "123Movie App",
                 description: "User-friendly movie streaming site with a clean interface and vast library of films across all genres. Includes a substantial collection of Punjabi cinema.",
                 punjabiMovies: true,
-                isNew: false
+                adminsChoice: true
+            },
+            {
+                url: "https://netmirror.center",
+                name: "NetMirror",
+                description: "Streaming site focused on providing high-quality content with minimal buffering and a clean, intuitive user interface. Includes a great selection of Punjabi movies.",
+                punjabiMovies: true
             },
             {
                 url: "https://www.cineby.gd/",
                 name: "Cineby GD",
                 description: "High-quality movie streaming site with an extensive library of films from around the world, including a great selection of Punjabi cinema.",
-                punjabiMovies: true,
-                isNew: true
+                punjabiMovies: true
             },
             {
                 url: "https://www.rgshows.ru/",
                 name: "RG Shows",
                 description: "Russian-based streaming platform offering international movies with multiple language options. Features a substantial collection of Punjabi films.",
-                punjabiMovies: true,
-                isNew: true
+                punjabiMovies: true
             },
             {
                 url: "https://multimovies.golf/",
                 name: "MultiMovies Golf",
                 description: "Streaming service with a unique domain offering movies from various countries, including a good selection of Punjabi movies with subtitles.",
-                punjabiMovies: true,
-                isNew: true
+                punjabiMovies: true
             },
             {
                 url: "https://cinemaos.live/",
                 name: "CinemaOS Live",
                 description: "Modern streaming platform with a clean interface and high-quality video playback. Includes Punjabi movies alongside other regional cinema.",
-                punjabiMovies: true,
-                isNew: true
+                punjabiMovies: true
             },
             {
                 url: "https://www.movi.pk/",
                 name: "Movi PK",
                 description: "Pakistan-based streaming site specializing in South Asian cinema with an excellent collection of Punjabi movies, dramas, and music.",
-                punjabiMovies: true,
-                isNew: true
+                punjabiMovies: true
             },
             {
                 url: "https://hydrahd.ru/",
                 name: "Hydra HD",
                 description: "Russian streaming service offering HD quality movies with multiple server options. Features international films including Punjabi cinema.",
-                punjabiMovies: true,
-                isNew: true
+                punjabiMovies: true
             },
             {
                 url: "https://cloudy.pk/",
                 name: "Cloudy PK",
                 description: "Pakistan-focused streaming platform with cloud-based delivery for smooth playback. Excellent source for Punjabi movies and regional content.",
-                punjabiMovies: true,
-                isNew: true
+                punjabiMovies: true
             },
             {
                 url: "https://desicinemas.to/",
                 name: "Desi Cinemas",
                 description: "Specialized streaming site focusing on South Asian cinema including Bollywood, Tollywood, and regional Indian films.",
-                punjabiMovies: false,
-                isNew: true
+                punjabiMovies: false
             },
             {
                 url: "https://www.rtally.xyz/",
                 name: "RTally XYZ",
                 description: "New streaming platform with a modern interface and fast loading times. Offers a diverse collection of movies from around the world.",
-                punjabiMovies: false,
-                isNew: true
+                punjabiMovies: false
             }
         ];
 
@@ -895,9 +898,10 @@
                 const punjabiTag = site.punjabiMovies ?
                     `<div class="punjabi-tag"><i class="fas fa-film"></i> Punjabi Movies</div>` :
                     '';
-                const newTag = site.isNew ?
-                    `<div class="new-tag"><i class="fas fa-certificate"></i> New</div>` :
+                const adminsChoiceTag = site.adminsChoice ?
+                    `<div class="admins-choice-tag"><i class="fas fa-star"></i> Admin's Choice</div>` :
                     '';
+                const newTag = '';
                 let domainsHTML = '';
                 site.domains.forEach((domain) => {
                     const isActive = domain.primary ? 'active-domain' : '';
@@ -910,7 +914,7 @@
                 });
                 return `
                     <div class="site-card ${category}-card">
-                        ${punjabiTag} ${newTag}
+                        ${punjabiTag} ${adminsChoiceTag}
                         <div class="card-header">
                             <div class="card-icon"><i class="fas ${category === 'anime' ? 'fa-dragon' : 'fa-film'}"></i></div>
                             <div>
@@ -933,12 +937,13 @@
                 const punjabiTag = site.punjabiMovies ?
                     `<div class="punjabi-tag"><i class="fas fa-film"></i> Punjabi Movies</div>` :
                     '';
-                const newTag = site.isNew ?
-                    `<div class="new-tag"><i class="fas fa-certificate"></i> New</div>` :
+                const adminsChoiceTag = site.adminsChoice ?
+                    `<div class="admins-choice-tag"><i class="fas fa-star"></i> Admin's Choice</div>` :
                     '';
+                const newTag = '';
                 return `
                     <div class="site-card ${category}-card">
-                        ${punjabiTag} ${newTag}
+                        ${punjabiTag} ${adminsChoiceTag}
                         <div class="card-header">
                             <div class="card-icon"><i class="fas ${category === 'anime' ? 'fa-dragon' : 'fa-film'}"></i></div>
                             <div>
@@ -1010,12 +1015,10 @@
         document.addEventListener('mouseover', function(e) {
             if (e.target.closest('.punjabi-tag')) e.target.closest('.punjabi-tag').style.transform =
                 'scale(1.05)';
-            if (e.target.closest('.new-tag')) e.target.closest('.new-tag').style.transform = 'scale(1.05)';
         });
         document.addEventListener('mouseout', function(e) {
             if (e.target.closest('.punjabi-tag')) e.target.closest('.punjabi-tag').style.transform =
             'scale(1)';
-            if (e.target.closest('.new-tag')) e.target.closest('.new-tag').style.transform = 'scale(1)';
         });
     </script>
 <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a23ace962ecfb7d1',t:'MTc4NTQ4MjA3NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
